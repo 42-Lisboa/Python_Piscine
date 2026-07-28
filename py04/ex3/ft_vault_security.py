@@ -41,8 +41,9 @@ def test_secure_archive() -> None:
     print(f"✅ {secure_archive('ancient_fragment.txt', 'r')}")
 
     # Test3 - Writing in Regular File
+    content = 'Brasil\nis gonna be\nHexa in 2030! 🏖️'
     print("\nUsing 'secure_archive' to write previous content to the file:")
-    print(f"✅ {secure_archive('ancient_fragment.txt', 'w', "Brasil\n🏖️")}")
+    print(f"✅ {secure_archive('ancient_fragment.txt', 'w', content)}")
 
     # BonusTest - Read Transformed Regular File
     print("\nUsing 'secure_archive' to read from the new regular file:")

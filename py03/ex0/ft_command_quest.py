@@ -14,6 +14,7 @@ def ft_command_quest(argv: list) -> None:
         print("⭕ No arguments provided!")
     else:
         i = 1
+        print(f"Arguments received: {len(argv[1:])}")
         for arg in argv[1:]:  # Skip the first list element : until the end
             print(f"✅ Argument {i}: {arg}")
             i += 1
