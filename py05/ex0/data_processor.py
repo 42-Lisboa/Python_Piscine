@@ -1,8 +1,12 @@
 #! /usr/bin/env python3
 
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod  # ABC stands for Abstract Base Class
 from typing import Any
 
+
+# ============================== Abstract Class ===============================
+#   Abstract class is like a contract with the major skeleton for sub classes
+# -----------------------------------------------------------------------------
 
 class DataProcessor(ABC):
     def __init__(self):
@@ -20,6 +24,10 @@ class DataProcessor(ABC):
     def output(self) -> tuple[int, str]:
         return self._storage.pop(0)
 
+
+# ============================= Concrete Classes ==============================
+#         Concrete classes unlike the abstract ones can be instanciated
+# -----------------------------------------------------------------------------
 
 class NumericProcessor(DataProcessor):
     def __init__(self):
@@ -102,3 +110,21 @@ class LogProcessor(DataProcessor):
             # the current dict will always have only two items
             i = ": ".join(i.values())
             self._storage.append((self._rank - 1, i))
+
+
+# ============================== Program Test ================================
+
+if __name__ == "__main__":
+    print("\n============== 🪐 Code Nexus - Data Processor 🪐 ==============\n")
+
+    # Instatiate objects
+    num_pro = NumericProcessor()
+    txt_pro = TextProcessor()
+    log_pro = LogProcessor()
+
+    # Testing Numeric Processor
+    print("🧮 Testing Numeric Processor...")
+    num_in1 = 42
+    print(f"Trying to validate input '{num_in1}': {num_pro.validate(num_in1)}")
+    num_in2 = "Hello"
+    print(f"Trying to validate input '{num_in2}': {num_pro.validate(num_in2)}")
