@@ -123,8 +123,123 @@ if __name__ == "__main__":
     log_pro = LogProcessor()
 
     # Testing Numeric Processor
+    # --------------------------------------------------------------------------
+
     print("🧮 Testing Numeric Processor...")
+
+    # Validation Method
+    print(">>> Test validation method:")
     num_in1 = 42
-    print(f"Trying to validate input '{num_in1}': {num_pro.validate(num_in1)}")
+    print(f"Validate single input '{num_in1}': ✅ {num_pro.validate(num_in1)}")
     num_in2 = "Hello"
-    print(f"Trying to validate input '{num_in2}': {num_pro.validate(num_in2)}")
+    print(f"Validate single input '{num_in2}': ❌ {num_pro.validate(num_in2)}")
+    num_in3 = [42, 4.35]
+    print(f"Validate list input '{num_in3}': ✅ {num_pro.validate(num_in3)}")
+    num_in4 = [42, "Hello"]
+    print(f"Validate list input '{num_in4}': ❌ {num_pro.validate(num_in4)}")
+
+    # Invalid Ingestion
+    num_in5 = "foo"
+    print(f"\n>>> Test invalid ingestion of string '{num_in5}' "
+          f"without prior validation:")
+    try:
+        num_pro.ingest(num_in5)
+        print(f"Processing data: ✅ {num_in5}")
+    except Exception as e:
+        print(f"Got exception: {e}\n")
+
+    # Valid Ingestion
+    print(">>> Test valid ingestion and output method:")
+    num_in6 = [1, 2, 3, 4, 5]
+    num_pro.ingest(num_in6)
+    print(f"Processing data: ✅ {num_in6}")
+
+    # Output Method
+    extract = 3
+    print(f"Extracting {extract} value(s)...")
+    while extract > 0:
+        value = num_pro.output()
+        print(f"Numeric value {value[0]}: {value[1]}")
+        extract -= 1
+
+    # Testing Text Processor
+    # --------------------------------------------------------------------------
+
+    print("\n🔤 Testing Text Processor...")
+
+    # Validation Method
+    print(">>> Test validation method:")
+    txt_in1 = "Hello"
+    print(f"Validate single input '{txt_in1}': ✅ {txt_pro.validate(txt_in1)}")
+    txt_in2 = 42
+    print(f"Validate single input '{txt_in2}': ❌ {txt_pro.validate(txt_in2)}")
+    txt_in3 = ["Hello", "World"]
+    print(f"Validate list input '{txt_in3}': ✅ {txt_pro.validate(txt_in3)}")
+    txt_in4 = [42, "Hello"]
+    print(f"Validate list input '{txt_in4}': ❌ {txt_pro.validate(txt_in4)}")
+
+    # Invalid Ingestion
+    txt_in5 = 42
+    print(f"\n>>> Test invalid ingestion of string '{txt_in5}' "
+          f"without prior validation:")
+    try:
+        txt_pro.ingest(txt_in5)
+        print(f"Processing data: ✅ {txt_in5}")
+    except Exception as e:
+        print(f"Got exception: {e}\n")
+
+    # Valid Ingestion
+    print(">>> Test valid ingestion and output method:")
+    txt_in6 = ['Hello', 'Nexus', 'World']
+    txt_pro.ingest(txt_in6)
+    print(f"Processing data: ✅ {txt_in6}")
+
+    # Output Method
+    extract = 2
+    print(f"Extracting {extract} value(s)...")
+    while extract > 0:
+        value = txt_pro.output()
+        print(f"Text value {value[0]}: {value[1]}")
+        extract -= 1
+
+    # Testing Log Processor
+    # --------------------------------------------------------------------------
+
+    print("\n📦 Testing Log Processor...")
+
+    # Validation Method
+    print(">>> Test validation method:")
+    log_in1 = {"Hello": "hey", "Good": "hi"}
+    print(f"Validate single input '{log_in1}': ✅ {log_pro.validate(log_in1)}")
+    log_in2 = "Hello"
+    print(f"Validate single input '{log_in2}': ❌ {log_pro.validate(log_in2)}")
+    log_in3 = [{"Ana": 'A', "João": 'B'}, {"Ceu": 'A', "Ro": 'D'}, {"Lu": 'B'}]
+    print(f"Validate list input '{log_in3}': ✅ {log_pro.validate(log_in3)}")
+    log_in4 = [{"Ana": 'A', "João": 'B'}, "Hello"]
+    print(f"Validate list input '{log_in4}': ❌ {log_pro.validate(log_in4)}")
+
+    # Invalid Ingestion
+    log_in5 = 42
+    print(f"\n>>> Test invalid ingestion of string '{log_in5}' "
+          f"without prior validation:")
+    try:
+        log_pro.ingest(log_in5)
+        print(f"Processing data: ✅ {log_in5}")
+    except Exception as e:
+        print(f"Got exception: {e}\n")
+
+    # Valid Ingestion
+    print(">>> Test valid ingestion and output method:")
+    log_in6 = [{'log_level': 'NOTICE', 'log_message': 'Connection to server'},
+               {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'},
+               {'log_level': 'PAUSE', 'log_message': 'Temporarily offline!!'}]
+    log_pro.ingest(log_in6)
+    print(f"Processing data: ✅ {log_in6}")
+
+    # Output Method
+    extract = 2
+    print(f"Extracting {extract} value(s)...")
+    while extract > 0:
+        value = log_pro.output()
+        print(f"Log entry {value[0]}: {value[1]}")
+        extract -= 1
