@@ -266,5 +266,5 @@ class DefensiveStrategy(BattleStrategy):
             print(f"{creature.attack()}")
             print(f"{creature.heal()}")
         else:
-            raise Exception(f"Invalid Creature {creature} for this "
+            raise Exception(f"Invalid Creature {creature.name} for this "
                             f"{self.__class__.__name__}")
