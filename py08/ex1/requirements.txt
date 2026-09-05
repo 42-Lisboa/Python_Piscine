@@ -1,0 +1,7 @@
+pandas
+numpy
+matplotlib
+importlib
+requests
+flake8
+mypy
