@@ -25,7 +25,7 @@ except ImportError as e:  # {e} example: "No module named 'pandas'"
     print(f"❌ [ERROR] Missing dependency: {missing_pkg}")
     print("\n-------- Install using pip --------")
     print(f"pip install {pkgs}\nor")
-    print("pip install -r requirements.txt")
+    print("python3 -m pip install -r requirements.txt")
 
     print("\n------ Install using Poetry ------")
     print(f"poetry add {pkgs}\nor")
