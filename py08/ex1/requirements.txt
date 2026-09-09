@@ -1,6 +1,5 @@
-pandas
-numpy
-matplotlib
-requests
-flake8
-mypy
+flake8>=7.3.0
+matplotlib>=3.10.0
+mypy>=2.3.0
+numpy>=2.2.0
+pandas>=2.3.0

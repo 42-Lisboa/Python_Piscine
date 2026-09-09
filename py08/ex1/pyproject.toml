@@ -8,12 +8,11 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "pandas",
-    "numpy",
-    "matplotlib",
-    "requests",
-    "mypy",
-    "flake8"
+    "flake8>=7.3.0",
+    "matplotlib>=3.10.0",
+    "mypy>=2.3.0",
+    "numpy>=2.2.0",
+    "pandas>=2.3.0"
 ]
 
 [tool.poetry]
