@@ -17,14 +17,17 @@ REQUIRED_VAR = [
 # -----------------------------------------------------------------------------
 
 def load_env(req_var: list[str]) -> dict[str, str | None]:
-    load_dotenv()  # load your environment var to os
+    load_dotenv()  # load environment var to os
 
+    missing: list[str | None] = []
     for key in req_var:  # let's check if any variable is missing
         has_value = os.getenv(key)
         if has_value is None:
+            missing.append(has_value)
             print(f"❌ Environment Variable '{key}' doesn't exist!")
-            print("💠 Check or set your .env file properly! 💠")
-            sys.exit(1)
+    if missing:
+        print("💠 Check or set your .env file properly! 💠")
+        sys.exit(1)
 
     env_data: dict[str, str | None] = {}  # now let's add all var to a dict
     env_data["MATRIX_MODE"] = os.getenv("MATRIX_MODE") or "development"
