@@ -35,7 +35,8 @@ def main(is_venv: bool) -> None:
 
 if __name__ == "__main__":
     is_venv = (sys.base_prefix != sys.prefix)
-    # base_prefix - always shows the path for the main global python installed
-    # prefix - where python install new packages
+    print(sys.prefix)
+    # base_prefix - where the main system python is installed
+    # prefix - where the current used python is installed
     #  is the same as base if there's no venv activated
     main(is_venv)
