@@ -35,25 +35,26 @@ def main() -> None:
             power_level=93.0,  # days on 42 ;)
             oxygen_level=83.5,
             last_maintenance=datetime.now(),
-            notes="All systems working properly."
+            notes="✅ All systems working properly."
         )
         print(f"ID: {ok_station.station_id}")
         print(f"Name: {ok_station.name}")
         print(f"Crew: {ok_station.crew_size} people")
         print(f"Power: {ok_station.power_level}%")
         print(f"Oxygen: {ok_station.oxygen_level}%")
-        print(f"Last maintenance: {ok_station.last_maintenance}")
+        print("Last maintenance: "
+              f"{ok_station.last_maintenance.strftime("%d %b %Y, %H:%M")}")
         print("Status: "
               f"{'Operational' if ok_station.is_operational else 'Offline'}")
         print(f"{ok_station.notes}")
     except ValidationError as e:
-        print(f"❌ ValidationError: {e}")
+        print(f"❌ ValidationError: {e}\n")
 
     print("\n=========================================")
 
     # 2. Invalid Test - Fail case
     # ---------------------------------------------------
-    print("Fail Case:")
+    print("\nFail Case:")
     try:
         ko_station = StationInfo(
             station_id="DSS-42",
@@ -69,13 +70,27 @@ def main() -> None:
         print(f"Crew: {ko_station.crew_size} people")
         print(f"Power: {ko_station.power_level}%")
         print(f"Oxygen: {ko_station.oxygen_level}%")
-        print(f"Last maintenance: {ko_station.last_maintenance}")
+        print("Last maintenance: "
+              f"{ko_station.last_maintenance.strftime("%d %b %Y, %H:%M")}")
         print("Status: "
               f"{'Operational' if ko_station.is_operational else 'Offline'}")
         print(f"{ko_station.notes}")
     except ValidationError as e:
-        print(f"❌ ValidationError: {e}")
+        print(f"❌ ValidationError: {e}\n")
 
 
 if __name__ == "__main__":
     main()
+
+
+# ---------------------------- IMPORTANT CONCEPTS ----------------------------
+#                .strftime() is a method from a datetime object
+# ----------------------------------------------------------------------------
+"""
+Main datetime formatting codes:
+- %Y: 4-digit year (e.g., 2026)
+- %m: Month as a number (01-12)
+- %b: Abbreviated month name (e.g., Sep)
+- %d: Day of the month (01-31)
+- %H:%M:%S: Hours (24h format), minutes, and seconds
+"""
