@@ -1,7 +1,11 @@
 from enum import Enum
 from datetime import datetime
-from pydantic import BaseModel, Field, model_validator, ValidationError
 from typing import Optional
+from pydantic import (  # type: ignore
+    BaseModel,
+    Field,
+    model_validator,
+    ValidationError)
 
 
 # =============================== Enum class ==================================
