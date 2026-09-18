@@ -43,7 +43,7 @@ def main() -> None:
         print(f"Power: {ok_station.power_level}%")
         print(f"Oxygen: {ok_station.oxygen_level}%")
         print("Last maintenance: "
-              f"{ok_station.last_maintenance.strftime("%d %b %Y, %H:%M")}")
+              f"{ok_station.last_maintenance.strftime('%d %b %Y, %H:%M')}")
         print("Status: "
               f"{'Operational' if ok_station.is_operational else 'Offline'}")
         print(f"{ok_station.notes}")
@@ -71,7 +71,7 @@ def main() -> None:
         print(f"Power: {ko_station.power_level}%")
         print(f"Oxygen: {ko_station.oxygen_level}%")
         print("Last maintenance: "
-              f"{ko_station.last_maintenance.strftime("%d %b %Y, %H:%M")}")
+              f"{ko_station.last_maintenance.strftime('%d %b %Y, %H:%M')}")
         print("Status: "
               f"{'Operational' if ko_station.is_operational else 'Offline'}")
         print(f"{ko_station.notes}")
